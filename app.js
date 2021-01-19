@@ -60,3 +60,14 @@ const startGame = () => {
     // fires every 1s, taking in the outcome of what direction you input
     interval = setInterval(moveOutcome, intervalTime);
 };
+
+const moveOutcome  = () => {
+    let squares = document.querySelectorAll(".grid div");
+    if (checkForHits(squares)) {
+        alert("you died! oh no!");
+        popup.style.display = "flex";
+        return clearInterval(interval);
+    } else {
+        moveSnake(squares);
+    };
+};
