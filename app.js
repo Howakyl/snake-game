@@ -17,3 +17,21 @@ let score = 0;
 let speed = 0.8;
 let intervalTime = 0;
 let interval = 0;
+
+
+document.addEventListener("DOMContentLoaded" , function () {
+    document.addEventListener("keyup" , control)
+    createBoard()
+    startGame()
+    playAgain.addEventListener("click" , replay);
+});
+
+const createBoard = () => {
+    popup.style.display = "none";
+
+    for (let i = 0; i < 100; i++) {
+        let div = document.createElement("div");
+        grid.appendChild(div);
+    };
+};
+
