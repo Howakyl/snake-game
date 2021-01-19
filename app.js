@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded" , function () {
     playAgain.addEventListener("click" , replay);
 });
 
+
+//loop to creat 100 divs for game board
 const createBoard = () => {
     popup.style.display = "none";
 
@@ -35,3 +37,26 @@ const createBoard = () => {
     };
 };
 
+// starts game, generates a random apple on any game square, 
+const startGame = () => {
+    let squares = document.querySelectorAll(".grid div");
+    randomApple(squares);
+    
+
+    //sets the direction where the snake is going. 1 = RIGHT , -1 = LEFT
+    direction = 1;
+    scoreDisplay.innerHTML = score;
+
+    //sets time it takes for the snake to move 
+    intervalTime = 1000;
+
+    //defines where exactly the snake will be located
+    currentSnake = [2, 1, 0];
+    currentIndex = 0;
+
+    // for each div the "snake" takes up, adds the class "snake" to game board div
+    currentSnake.forEach(index=>squares[index].classList.add("snake"));
+
+    // fires every 1s, taking in the outcome of what direction you input
+    interval = setInterval(moveOutcome, intervalTime);
+};
