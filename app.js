@@ -61,6 +61,8 @@ const startGame = () => {
     interval = setInterval(moveOutcome, intervalTime);
 };
 
+
+// if snake hits itself, ends the game. otherwise, moves snake to new grid spot
 const moveOutcome  = () => {
     let squares = document.querySelectorAll(".grid div");
     if (checkForHits(squares)) {
@@ -70,4 +72,16 @@ const moveOutcome  = () => {
     } else {
         moveSnake(squares);
     };
+};
+
+
+// when snake moves, removes last index and adds the direction to the head
+// if the snake eats an apple, a "snake" div is added to the head
+const moveSnake = (squares) => {
+    let tail = currentSnake.pop();
+    squares[tail].classList.remove("snake");
+    currentSnake.unshift(currentSnake[0]+direction);
+
+    eatApple(squares, tail);
+    squares[currentSnake[0]].classList.add("snake");
 };
