@@ -86,6 +86,8 @@ const moveSnake = (squares) => {
     squares[currentSnake[0]].classList.add("snake");
 };
 
+//checks if a snake hits a wall, or a div with the "snake" class
+// ex: (grid is 100 total. if snake * width > 100, and the direction = width, the game ends)
 const checkForHits = (squares) => {
     if (
         (currentSnake[0] + width >= (width*width) && direction === width) ||
